@@ -4,10 +4,6 @@
 
 #define MAX_SIZE 5
 
-struct Graph *graph;
-
-struct Graph *gr;
-
 // A structure to represent an adjacency list node
 struct adj_list_node
 {
@@ -165,20 +161,35 @@ int strongly_connectivity(struct Graph *graph, struct Graph *gr, int v)
 int main()
 {
 
-    struct Graph *graph = create_graph(MAX_SIZE);
-    struct Graph *gr = create_graph(MAX_SIZE);
+    struct Graph *graph1 = create_graph(MAX_SIZE);
+    struct Graph *gr1 = create_graph(MAX_SIZE);
 
-    add_edge(graph, gr, 1, 0, 2);
-    add_edge(graph, gr, 0, 2, 2);
-    add_edge(graph, gr, 2, 1, 2);
-    add_edge(graph, gr, 0, 3, 2);
-    add_edge(graph, gr, 3, 4, 2);
+    add_edge(graph1, gr1, 1, 0, 2);
+    add_edge(graph1, gr1, 0, 2, 2);
+    add_edge(graph1, gr1, 2, 1, 2);
+    add_edge(graph1, gr1, 0, 3, 2);
+    add_edge(graph1, gr1, 3, 4, 2);
 
-    int t = strongly_connectivity(graph, gr, MAX_SIZE);
-
-    if(t == 0){
+    int t1 = strongly_connectivity(graph1, gr1, MAX_SIZE);
+    printf("Graph 1:\n");
+    if(t1 == 0){
         printf("Graph is not Strongly connected\n");
-    }else if(t == 1){
+    }else if(t1 == 1){
+        printf("Graph is Strongly connected\n");
+    }
+
+    struct Graph *graph2 = create_graph(MAX_SIZE-2);
+    struct Graph *gr2 = create_graph(MAX_SIZE);
+
+    add_edge(graph2, gr2, 1, 0, 2);
+    add_edge(graph2, gr2, 0, 2, 2);
+    add_edge(graph2, gr2, 2, 1, 2);
+
+    int t2 = strongly_connectivity(graph2, gr2, MAX_SIZE-2);
+    printf("Graph 2:\n");
+    if(t2 == 0){
+        printf("Graph is not Strongly connected\n");
+    }else if(t2 == 1){
         printf("Graph is Strongly connected\n");
     }
 
